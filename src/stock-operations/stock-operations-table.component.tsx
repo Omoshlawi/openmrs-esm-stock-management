@@ -134,9 +134,13 @@ const StockOperations: React.FC<StockOperationsTableProps> = () => {
 
   const tableRows = useMemo(() => {
     return items?.map((stockOperation, index) => {
-      const commonNames = stockOperation?.stockOperationItems
-        ? stockOperation?.stockOperationItems.map((item) => item.commonName).join(', ')
-        : '';
+      const threshHold = 1;
+      const itemsCountGreaterThanThreshold = (stockOperation?.stockOperationItems?.length ?? 0) > threshHold;
+      const commonNames =
+        stockOperation?.stockOperationItems
+          .slice(0, itemsCountGreaterThanThreshold ? threshHold : undefined)
+          .map((item) => item.commonName)
+          ?.join(', ') ?? '';
 
       return {
         ...stockOperation,
@@ -154,7 +158,11 @@ const StockOperations: React.FC<StockOperationsTableProps> = () => {
             showprops={true}
           />
         ),
-        stockOperationItems: commonNames,
+        stockOperationItems:
+          commonNames +
+          (itemsCountGreaterThanThreshold
+            ? `, ...(${stockOperation?.stockOperationItems.length - threshHold} more)`
+            : ''),
         status: `${stockOperation?.status}`,
         source: `${stockOperation?.sourceName ?? ''}`,
         destination: `${stockOperation?.destinationName ?? ''}`,
