@@ -40,7 +40,7 @@ import { DATE_PICKER_CONTROL_FORMAT, DATE_PICKER_FORMAT, StockFilters } from '..
 import { handleMutate } from '../utils';
 
 import styles from './stock-operations-table.scss';
-import StockOperationStatus from './add-stock-operation/stock-operation-status.component';
+import StockOperationStatus from './add-stock-operation/stock-items-expanded-row/stock-operation-expanded-row.component';
 
 interface StockOperationsTableProps {
   status?: string;

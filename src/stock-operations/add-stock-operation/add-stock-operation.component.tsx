@@ -33,8 +33,8 @@ import { getStockOperationLinks, operationStatusColor } from '../stock-operation
 import styles from './add-stock-operation.scss';
 import { useStockOperationTypes } from '../../stock-lookups/stock-lookups.resource';
 import { StockOperationLinkDTO } from '../../core/api/types/stockOperation/StockOperationLinkDTO';
-import StockOperationStatus from './stock-operation-status.component';
 import StockOperationRelatedLink from './stock-operation-related-link.component';
+import StockOperationExpandedRow from './stock-items-expanded-row/stock-operation-expanded-row.component';
 
 const AddStockOperation: React.FC<AddStockOperationProps> = (props) => {
   const { t } = useTranslation();
@@ -208,7 +208,7 @@ const AddStockOperation: React.FC<AddStockOperationProps> = (props) => {
                 </span>
               </div>
             )}
-            <StockOperationStatus model={props?.model} />
+            <StockOperationExpandedRow model={props?.model} />
           </div>
 
           {((!props?.model?.permission?.canEdit &&
