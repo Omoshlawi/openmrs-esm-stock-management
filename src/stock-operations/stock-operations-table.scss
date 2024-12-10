@@ -62,7 +62,9 @@
 .statusContainer {
   display: flex;
   margin: 10px;
-  gap: 1rem;
+  gap: layout.$spacing-05;
+  flex-direction: column;
+  padding: layout.$spacing-05;
 }
 
 .textHeading {
@@ -75,4 +77,21 @@
   .text {
     margin-right: 4px;
   }
+}
+
+.statusContainerBody {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  // justify-content: center;
+  // padding: 20px;
+}
+
+.statusContainerRow {
+  display: flex;
+  width: 100%;
+  border: none;
+  justify-content: space-between;
+  flex: 1;
 }
